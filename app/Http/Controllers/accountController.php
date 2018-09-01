@@ -14,7 +14,7 @@ class accountController extends Controller
      */
     public function index()
     {
-
+        return view('account/index');
     }
 
     /**
@@ -35,7 +35,17 @@ class accountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        $user = User::create(request(['name', 'email', 'password']));
+
+        auth()->login($user);
+
+        return redirect()->to('/games');
     }
 
     /**

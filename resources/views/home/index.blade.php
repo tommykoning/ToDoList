@@ -1,5 +1,5 @@
 @extends('layouts.basic')
-@section('basic')
+@section('main')
     <p>hi</p>
 @endsection
 
