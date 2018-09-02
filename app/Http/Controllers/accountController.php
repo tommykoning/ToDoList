@@ -14,7 +14,7 @@ class accountController extends Controller
      */
     public function index()
     {
-        return view('account/index');
+        return view('auth/login');
     }
 
     /**
