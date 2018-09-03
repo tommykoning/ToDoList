@@ -27,4 +27,5 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('/register', 'Auth\RegisterController@create');
+Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 
