@@ -81,7 +81,7 @@ class RegisterController extends Controller
 
         Mail::to($user->email)->send(new VerifyMail($user));
 
-        return $user;
+        return redirect('/login');
     }
 
     public function verifyUser($token)
