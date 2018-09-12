@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\ToDoList;
 use Illuminate\Http\Request;
 
-class listController extends Controller
+class toDoListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class listController extends Controller
      */
     public function index()
     {
-        
+        return view('');
     }
 
     /**
