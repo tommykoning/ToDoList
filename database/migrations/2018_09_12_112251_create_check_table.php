@@ -13,8 +13,12 @@ class CreateCheckTable extends Migration
      */
     public function up()
     {
-        Schema::create('check', function (Blueprint $table) {
+        Schema::create('checks', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('task_id');
+            $table->foreign('task_id')->references('id')->on('tasks');
+            $table->string('check_name');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateCheckTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('check');
+        Schema::dropIfExists('checks');
     }
 }
