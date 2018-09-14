@@ -14,7 +14,7 @@ class toDoListController extends Controller
      */
     public function index()
     {
-        return view('');
+        return view('toDoList/index');
     }
 
     /**
@@ -44,7 +44,7 @@ class toDoListController extends Controller
      * @param  \App\list  $list
      * @return \Illuminate\Http\Response
      */
-    public function show(list $list)
+    public function show(request $request)
     {
         //
     }
@@ -55,7 +55,7 @@ class toDoListController extends Controller
      * @param  \App\list  $list
      * @return \Illuminate\Http\Response
      */
-    public function edit(list $list)
+    public function edit(request $request)
     {
         //
     }
@@ -67,18 +67,18 @@ class toDoListController extends Controller
      * @param  \App\list  $list
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, list $list)
+    public function update(Request $request)
     {
         //
     }
 
     /**
      * Remove the specified resource from storage.
-     *
+     *php artisan make:migration create_users_table --create=users
      * @param  \App\list  $list
      * @return \Illuminate\Http\Response
      */
-    public function destroy(list $list)
+    public function destroy(request $request)
     {
         //
     }
