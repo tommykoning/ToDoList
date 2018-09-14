@@ -42,7 +42,8 @@ class LoginController extends Controller
     {
         if (!$user->verified) {
             auth()->logout();
-            return back()->with('warning', 'You need to confirm your account. We have sent you an activation code, please check your email.');
+            session()->flash('status', 'You need to confirm your account. We have sent you an activation code, please check your email.');
+            return back();
         }
         return redirect()->intended($this->redirectPath());
     }
