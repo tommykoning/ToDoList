@@ -14,8 +14,6 @@
 Route::redirect('/', 'home');
 Route::resource('home', 'homeController');
 
-Route::resource('account', 'accountController');
-
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
@@ -28,4 +26,9 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('/register', 'Auth\RegisterController@create');
 Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
+
+Route::resource('account', 'accountController');
+
+Route::resource('todolist', 'toDoListController');
+
 

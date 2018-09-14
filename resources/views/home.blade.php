@@ -14,7 +14,11 @@
                         </div>
                     @endif
 
-                    <p>welcome log in to continue</p>
+                    @guest
+                            <p>welcome log in to continue</p>
+                        @else
+                            <p>welcome go to ToDoList to continue</p>
+                    @endif
                 </div>
             </div>
         </div>
