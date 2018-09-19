@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\ToDoList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class toDoListController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +16,12 @@ class toDoListController extends Controller
      */
     public function index()
     {
-        return view('toDoList/index');
+        if(auth::user()->role == "admin"){
+            $data = 'admin';
+        } else {
+            $data = 'normaal';
+        }
+        return view('toDoList/index', compact('data'));
     }
 
     /**
