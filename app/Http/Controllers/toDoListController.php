@@ -31,7 +31,7 @@ class toDoListController extends Controller
      */
     public function create()
     {
-        //
+        return view('toDoList/create');
     }
 
     /**
@@ -42,7 +42,12 @@ class toDoListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newList = new ToDoList();
+        $newList->name = $request['title'];
+        $newList->user_id = auth::user()->id;
+        $newList->save();
+
+        return redirect()->route('todolist.index');
     }
 
     /**
