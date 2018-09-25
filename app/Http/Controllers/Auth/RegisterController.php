@@ -68,6 +68,11 @@ class RegisterController extends Controller
     protected function create(Request $request)
     {
         $data = $request->all();
+
+        if (User::all()->where("email", "=", $data['email'])->count() > 0) {
+            dd($request);
+        }
+
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],

@@ -11,7 +11,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -61,7 +64,6 @@
                                         home
                                     </a>
 
-
                                     <a class="dropdown-item" href="{{route('todolist.index')}}">
                                         ToDoList
                                     </a>
@@ -69,6 +71,12 @@
                                     <a class="dropdown-item" href="{{route('account.index')}}">
                                         Account
                                     </a>
+
+                                    @if(auth::user()->role == 'admin')
+                                        <a class="dropdown-item" href="{{route('account.index')}}">
+                                            Admin Settings
+                                        </a>
+                                    @endif
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -96,5 +104,6 @@
             @yield('content')
         </main>
     </div>
+    @yield('script')
 </body>
 </html>

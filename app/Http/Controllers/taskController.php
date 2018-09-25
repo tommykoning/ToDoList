@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Task;
 use Illuminate\Http\Request;
 
-class accountController extends Controller
+class taskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class accountController extends Controller
      */
     public function index()
     {
-        return view('account/index');
+        //
     }
 
     /**
@@ -35,16 +35,16 @@ class accountController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Account  $account
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function show(Account $account)
+    public function show(Task $task)
     {
         //
     }
@@ -52,10 +52,10 @@ class accountController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Account  $account
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(Account $account)
+    public function edit(Task $task)
     {
         //
     }
@@ -64,10 +64,10 @@ class accountController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Account  $account
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Account $account)
+    public function update(Request $request, Task $task)
     {
         //
     }
@@ -75,10 +75,10 @@ class accountController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Account  $account
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Account $account)
+    public function destroy(Task $task)
     {
         //
     }

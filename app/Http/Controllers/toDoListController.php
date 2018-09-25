@@ -17,11 +17,12 @@ class toDoListController extends Controller
     public function index()
     {
         if(auth::user()->role == "admin"){
-            $data = 'admin';
+            $lists = ToDoList::all();
         } else {
-            $data = 'normaal';
+            $lists = ToDoList::where('user_id', '=', Auth::user()->id)->get();
         }
-        return view('toDoList/index', compact('data'));
+        //dd($lists);
+        return view('toDoList/index', compact('lists'));
     }
 
     /**
@@ -53,12 +54,14 @@ class toDoListController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\list  $list
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function show(request $request)
+    public function show($id)
     {
-        //
+        $list = ToDoList::find($id);
+
+        return view('toDoList/show', compact('list'));
     }
 
     /**

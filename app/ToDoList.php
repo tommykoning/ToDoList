@@ -7,5 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class ToDoList extends Model
 {
-    //
+    protected $fillable = [
+        'name',
+        'user_id'
+    ];
+
+    public function todolistCheck() {
+        
+    }
 }
