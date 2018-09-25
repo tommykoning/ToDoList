@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class taskController extends Controller
 {
@@ -14,7 +15,7 @@ class taskController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
