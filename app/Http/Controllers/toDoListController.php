@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ToDoList;
+use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,25 +55,26 @@ class toDoListController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param $id
+     * @param ToDoList $list
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $list = ToDoList::find($id);
+        $tasks = $list->Tasks();
 
-        return view('toDoList/show', compact('list'));
+        return view('toDoList/show', compact('list', 'tasks'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\list  $list
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return void
      */
     public function edit(request $request)
     {
-        //
+
     }
 
     /**
@@ -93,8 +95,8 @@ class toDoListController extends Controller
      * @param  \App\list  $list
      * @return \Illuminate\Http\Response
      */
-    public function destroy(request $request)
+    public function destroy($id)
     {
-        //
+        ToDoList::find($id)->delete();
     }
 }

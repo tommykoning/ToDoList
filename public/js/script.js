@@ -78,7 +78,6 @@ module.exports = __webpack_require__(45);
 
 $(document).ready(function () {
     $('[type="submit"]').on("click", function () {
-        alert('test');
         $('form').submit(function () {
             $(this).find("[type='submit']").prop('disabled', true);
         });

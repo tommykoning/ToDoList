@@ -15,7 +15,7 @@ class taskController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -23,9 +23,9 @@ class taskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        dd($id);
     }
 
     /**

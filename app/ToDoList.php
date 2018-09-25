@@ -12,7 +12,7 @@ class ToDoList extends Model
         'user_id'
     ];
 
-    public function todolistCheck() {
-        
+    public function Tasks() {
+        return $this->hasMany('App\Task');
     }
 }
