@@ -25,7 +25,7 @@ class taskController extends Controller
      */
     public function create($id)
     {
-        dd($id);
+        return view('task/create', compact('id'));
     }
 
     /**

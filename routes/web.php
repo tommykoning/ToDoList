@@ -31,4 +31,9 @@ Route::resource('account', 'accountController');
 
 Route::resource('todolist', 'toDoListController');
 
+Route::resource('todolist/{list}/task', 'taskController');
+
+
+
+
 

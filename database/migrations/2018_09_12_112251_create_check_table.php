@@ -13,13 +13,14 @@ class CreateCheckTable extends Migration
      */
     public function up()
     {
-        Schema::create('checks', function (Blueprint $table) {
+        Schema::create('statuses', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('task_id');
-            $table->foreign('task_id')->references('id')->on('tasks');
-            $table->string('check_name');
-            $table->boolean('status')->default(false);
+            $table->string('status_name');
             $table->timestamps();
+        });
+
+        Schema::table('tasks', function($table) {
+            $table->foreign('status_id')->references('id')->on('statuses');
         });
     }
 
