@@ -12,6 +12,7 @@ class StatusTableSeeder extends Seeder
      */
     public function run()
     {
+
         DB::table('statuses')->insert([
             'status_name' => 'done'
         ]);

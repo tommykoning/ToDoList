@@ -6,11 +6,22 @@
                 <div class="card">
                     <div class="card-header"><p>ToDoList create</p></div>
                     <div class="card-body">
-                        <form action="{{route('todolist.store')}}" method="post">
+                        <form action="{{route('task.store', $id)}}" method="post">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input type="text" class="form-control" id="title" name="title" placeholder="title">
+                            </div>
+                            <div class="form-group">
+                                <label for="status">status</label>
+                                <select class="form-control" name="status" id="TaskStatusSelect">
+                                    <option value=""></option>
+                                    @foreach($statuses as $status)
+                                        <option value="{{$status->id}}">{{$status->status_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <input type="submit">
                             </div>
                         </form>

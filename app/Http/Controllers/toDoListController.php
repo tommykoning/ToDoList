@@ -6,6 +6,8 @@ use App\ToDoList;
 use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User;
+
 
 class toDoListController extends Controller
 {
@@ -17,12 +19,11 @@ class toDoListController extends Controller
      */
     public function index()
     {
-        if(auth::user()->role == "admin"){
+        if(auth::user()->role->role_name == "admin"){
             $lists = ToDoList::all();
         } else {
             $lists = ToDoList::where('user_id', '=', Auth::user()->id)->get();
         }
-        //dd($lists);
         return view('toDoList/index', compact('lists'));
     }
 
@@ -61,7 +62,7 @@ class toDoListController extends Controller
     public function show($id)
     {
         $list = ToDoList::find($id);
-        $tasks = $list->Tasks();
+        $tasks = $list->Tasks;
 
         return view('toDoList/show', compact('list', 'tasks'));
     }
@@ -72,9 +73,9 @@ class toDoListController extends Controller
      * @param Request $request
      * @return void
      */
-    public function edit(request $request)
+    public function edit(request $request, $id)
     {
-
+        //
     }
 
     /**
@@ -91,12 +92,19 @@ class toDoListController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *php artisan make:migration create_users_table --create=users
-     * @param  \App\list  $list
-     * @return \Illuminate\Http\Response
+     * @param ToDoList $todolist
+     * @return void
      */
-    public function destroy($id)
+    public function destroy(ToDoList $todolist)
     {
-        ToDoList::find($id)->delete();
+        $tasks = Task::where('to_do_list_id', '=', $todolist['id'])->get();
+
+        foreach ($tasks as $task) {
+            $task->delete();
+        }
+
+        $todolist->delete();
+
+        return redirect()->route('todolist.index');
     }
 }

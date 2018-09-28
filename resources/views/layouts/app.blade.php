@@ -72,7 +72,7 @@
                                         Account
                                     </a>
 
-                                    @if(auth::user()->role == 'admin')
+                                    @if(auth::user()->role->role_name == 'admin')
                                         <a class="dropdown-item" href="{{route('account.index')}}">
                                             Admin Settings
                                         </a>

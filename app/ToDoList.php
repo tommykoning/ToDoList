@@ -13,6 +13,6 @@ class ToDoList extends Model
     ];
 
     public function Tasks() {
-        return $this->hasMany('App\Task');
+        return $this->hasMany('App\Task', 'to_do_list_id');
     }
 }

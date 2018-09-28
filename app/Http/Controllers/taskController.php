@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use App\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,7 @@ class taskController extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -25,7 +26,8 @@ class taskController extends Controller
      */
     public function create($id)
     {
-        return view('task/create', compact('id'));
+        $statuses = Status::all();
+        return view('task/create', compact('id', 'statuses'));
     }
 
     /**
@@ -34,9 +36,17 @@ class taskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $newtask = new Task();
+        $newtask->task_name = $request['title'];
+        $newtask->status_id = $request['status'];
+        $newtask->to_do_list_id = $id;
+
+        $newtask->save();
+
+        return redirect()->route('todolist.show', $id);
+
     }
 
     /**
@@ -56,7 +66,7 @@ class taskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(Task $task)
+    public function edit($id, task $task)
     {
         //
     }
@@ -79,8 +89,9 @@ class taskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function destroy($id, Task $task)
     {
-        //
+        $task->delete();
+        return redirect()->route('todolist.show', $id);
     }
 }

@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'tommy koning',
             'email' => 'admin@test.nl',
             'password' => bcrypt('admin'),
-            'role' => 'admin',
+            'role_id' => 2,
             'verified' => 1,
         ]);
     }

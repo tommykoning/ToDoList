@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -29,5 +30,9 @@ class User extends Authenticatable
     public function verifyUser()
     {
         return $this->hasOne('App\VerifyUser');
+    }
+
+    public function Role() {
+        return $this->belongsTo('App\Role');
     }
 }
