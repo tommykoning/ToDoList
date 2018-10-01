@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class accountController extends Controller
+class adminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +13,7 @@ class accountController extends Controller
      */
     public function index()
     {
-        $user = auth::user();
-        //dd($user);
-        return view('account/index', compact('user'));
+        dd('hoi');
     }
 
     /**
@@ -38,16 +34,16 @@ class accountController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Account  $account
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Account $account)
+    public function show($id)
     {
         //
     }
@@ -55,10 +51,10 @@ class accountController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Account  $account
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Account $account)
+    public function edit($id)
     {
         //
     }
@@ -67,10 +63,10 @@ class accountController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Account  $account
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Account $account)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,10 +74,10 @@ class accountController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Account  $account
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Account $account)
+    public function destroy($id)
     {
         //
     }

@@ -35,4 +35,16 @@ class User extends Authenticatable
     public function Role() {
         return $this->belongsTo('App\Role');
     }
+
+    public function isAdmin()
+    {
+        if($this->role_id === 2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

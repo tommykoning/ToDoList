@@ -27,11 +27,18 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('/register', 'Auth\RegisterController@create');
 Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 
-Route::resource('account', 'accountController');
+Route::group(['middleware' => 'auth'], function(){
 
-Route::resource('todolist', 'toDoListController');
+    Route::resource('account', 'accountController');
 
-Route::resource('todolist/{list}/task', 'taskController');
+    Route::resource('todolist', 'toDoListController');
+
+    Route::resource('todolist/{list}/task', 'taskController');
+
+});
+
+Route::resource('admin', 'adminController')->middleware('check.role');
+
 
 
 
