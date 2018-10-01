@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\ToDoList;
 use App\Task;
+use DateTimeZone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Carbon\Carbon;
 
 
 class toDoListController extends Controller
@@ -97,6 +99,8 @@ class toDoListController extends Controller
      */
     public function destroy(ToDoList $todolist)
     {
+        $time = Carbon::now(new DateTimeZone('Europe/Amsterdam'));
+        dd($time->format('m-d-Y'));
         $tasks = Task::where('to_do_list_id', '=', $todolist['id'])->get();
 
         foreach ($tasks as $task) {

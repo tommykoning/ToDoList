@@ -33,7 +33,8 @@ class taskController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $id)
@@ -41,6 +42,7 @@ class taskController extends Controller
         $newtask = new Task();
         $newtask->task_name = $request['title'];
         $newtask->status_id = $request['status'];
+        $newtask->description = $request['beschrijving'];
         $newtask->to_do_list_id = $id;
 
         $newtask->save();
@@ -52,10 +54,11 @@ class taskController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Task  $task
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @param  \App\Task $task
+     * @return void
      */
-    public function show(Task $task)
+    public function show($id ,Task $task)
     {
         //
     }
@@ -68,7 +71,8 @@ class taskController extends Controller
      */
     public function edit($id, task $task)
     {
-        //
+        $statuses = Status::all();
+        return view('task/edit', compact('task', 'id', 'statuses'));
     }
 
     /**
@@ -78,9 +82,15 @@ class taskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request, $id, Task $task)
     {
-        //
+        $task['task_name'] = $request['title'];
+        $task['status_id'] = $request['status'];
+        $task['description'] = $request['beschrijving'];
+        $task->save();
+
+        return redirect()->route('todolist.show', $id);
+
     }
 
     /**

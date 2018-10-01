@@ -13,6 +13,9 @@
                                 <div class="col-5">
                                     <a class="form-control" href="{{route('todolist.show', $list->id)}}">{{$list->name}}</a>
                                 </div>
+                                <div class="col-auto">
+                                    <a href="{{route('todolist.edit', ['list' =>$list->id])}}" class="btn btn-primary">edit</a>
+                                </div>
                                 <form action="{{route('todolist.destroy', $list->id)}}" method="post">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}

@@ -4,7 +4,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header"><p>ToDoList create</p></div>
+                    <div class="card-header">
+                        <p>create ToDoList</p>
+                    </div>
                     <div class="card-body">
                         <form action="{{route('todolist.store')}}" method="post">
                             {{ csrf_field() }}

@@ -4,7 +4,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header"><p>ToDoList create</p></div>
+                    <div class="card-header">
+                        <p>create task</p>
+                    </div>
                     <div class="card-body">
                         <form action="{{route('task.store', $id)}}" method="post">
                             {{ csrf_field() }}
@@ -20,6 +22,10 @@
                                         <option value="{{$status->id}}">{{$status->status_name}}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="beschrijving">beschrijving</label>
+                                <input type="text" class="form-control" name="beschrijving">
                             </div>
                             <div class="form-group">
                                 <input type="submit">
