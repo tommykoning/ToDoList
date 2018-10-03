@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('account', 'accountController');
 
     Route::resource('todolist', 'toDoListController');
+    route::get('overview', 'toDoListController@overview')->name('overview');
 
     Route::resource('todolist/{list}/task', 'taskController');
 

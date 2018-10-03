@@ -70,37 +70,58 @@ class toDoListController extends Controller
     }
 
     /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function overview()
+    {
+        if(auth::user()->role->role_name == "admin"){
+            $lists = ToDoList::all();
+        } else {
+            $lists = ToDoList::where('user_id', '=', Auth::user()->id)->get();
+        }
+        return view('toDoList/overview', compact('lists'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
-     * @param Request $request
+     * @param $id
      * @return void
      */
-    public function edit(request $request, $id)
+    public function edit($id)
     {
-        //
+        $toDoList = ToDoList::find($id);
+
+        return view('toDoList/edit', compact('toDoList'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\list  $list
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @param ToDoList $toDoList
+     * @return void
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        //
+        $todolist = ToDoList::find($id);
+        $todolist->name = $request['title'];
+        $todolist->save();
+
+        return redirect()->route('todolist.index');
+
     }
 
     /**
      * Remove the specified resource from storage.
      * @param ToDoList $todolist
      * @return void
+     * @throws \Exception
      */
     public function destroy(ToDoList $todolist)
     {
         $time = Carbon::now(new DateTimeZone('Europe/Amsterdam'));
-        dd($time->format('m-d-Y'));
+        dd($time->format('d-m-Y'));
         $tasks = Task::where('to_do_list_id', '=', $todolist['id'])->get();
 
         foreach ($tasks as $task) {

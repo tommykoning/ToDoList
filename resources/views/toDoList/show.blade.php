@@ -6,29 +6,37 @@
                 <div class="card">
                     <div class="card-header">
                         <p>{{$list->name}}</p>
+                        <a href="{{route('todolist.index')}}" class="btn btn-secondary">back</a>
+                        <a class="btn btn-primary" href='{{route('task.create', $list->id)}}'>create</a>
+                        <button class="btn btn-primary" id="sort" data="0">sorteer</button>
                     </div>
-                        <div class="card-body">
-                        <a class="btn btn-primary" href='{{route('task.create', $list->id)}}'>create</a> <br><br><br>
+                    <div class="card-body">
                         @foreach($tasks as $task)
-                                <div class="form-row">
-                                    <div class="col-5">
-                                        <p class="form-control">{{$task->task_name}}</p>
-                                    </div>
-                                    <div class="col-auto">
-                                        <a href="{{route('task.edit', ['list' =>$list->id, 'task' =>$task->id])}}" class="btn btn-primary">edit</a>
-                                    </div>
-                                    <form action="{{route('task.destroy', ['list' => $list->id, 'task' => $task->id])}}" method="post">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <div class="col-auto">
-                                            <input type="submit" class="btn btn-primary" value="delete">
-                                        </div>
-                                    </form>
-                                    </div>
+                            <div class="form-row task" data="{{$task['status_id']}}">
+                                <div class="col-5">
+                                    <p class="form-control">{{$task->task_name}}</p>
                                 </div>
+                                <div class="col-auto">
+                                    <p class="form-control">@if($task->status){{$task->status->status_name}} @else null @endif</p>
+                                </div>
+                                <div class="col-auto">
+                                    <a href="{{route('task.edit', ['list' =>$list->id, 'task' =>$task->id])}}" class="btn btn-primary">edit</a>
+                                </div>
+                                <form action="{{route('task.destroy', ['list' => $list->id, 'task' => $task->id])}}" method="post">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <div class="col-auto">
+                                        <input type="submit" class="btn btn-primary" value="delete">
+                                    </div>
+                                </form>
+                            </div>
                         @endforeach
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    //
 @endsection

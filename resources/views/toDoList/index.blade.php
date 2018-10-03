@@ -4,8 +4,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header"><p>ToDoList</p>
+                    <div class="card-header">
+                        <p>ToDoList</p>
                         <a class="btn btn-primary" href='{{route('todolist.create')}}'>new</a>
+                        <a class="btn btn-primary" href='{{route('overview')}}'>overview</a>
                     </div>
                     <div class="card-body">
                         @foreach($lists as $list)
@@ -14,7 +16,7 @@
                                     <a class="form-control" href="{{route('todolist.show', $list->id)}}">{{$list->name}}</a>
                                 </div>
                                 <div class="col-auto">
-                                    <a href="{{route('todolist.edit', ['list' =>$list->id])}}" class="btn btn-primary">edit</a>
+                                    <a href="{{route('todolist.edit', ['toDoList' =>$list->id])}}" class="btn btn-primary">edit</a>
                                 </div>
                                 <form action="{{route('todolist.destroy', $list->id)}}" method="post">
                                     {{ csrf_field() }}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use App\Status;
+use App\ToDoList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,8 +27,9 @@ class taskController extends Controller
      */
     public function create($id)
     {
+        $todolist = ToDoList::find($id);
         $statuses = Status::all();
-        return view('task/create', compact('id', 'statuses'));
+        return view('task/create', compact('id', 'statuses', 'todolist'));
     }
 
     /**
@@ -78,7 +80,7 @@ class taskController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */

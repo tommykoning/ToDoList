@@ -5,7 +5,8 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <p>create task</p>
+                        <p>create task for {{$todolist['name']}}</p>
+                        <a href="{{route('todolist.show', $id)}}" class="btn btn-secondary">back</a>
                     </div>
                     <div class="card-body">
                         <form action="{{route('task.store', $id)}}" method="post">
