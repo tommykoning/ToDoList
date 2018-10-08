@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Role;
 use Illuminate\Http\Request;
 
 class adminController extends Controller
@@ -13,7 +15,10 @@ class adminController extends Controller
      */
     public function index()
     {
-        dd('hoi');
+        $users = User::all();
+        $roles = Role::all();
+
+        return view('account/admin', compact('users', 'roles'));
     }
 
     /**
@@ -66,9 +71,9 @@ class adminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
