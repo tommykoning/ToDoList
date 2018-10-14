@@ -12,12 +12,12 @@
                     </div>
                     <div class="card-body">
                         @foreach($tasks as $task)
-                            <div class="form-row task" data="{{$task['status_id']}}">
+                            <div class="form-row task" data-sort="@if($task['status_id']) {{$task['status_id']}} @else 0 @endif">
                                 <div class="col-5">
                                     <p class="form-control">{{$task->task_name}}</p>
                                 </div>
                                 <div class="col-auto">
-                                    <p class="form-control">@if($task->status){{$task->status->status_name}} @else null @endif</p>
+                                    <p class="form-control">@if($task->status){{$task->status->status_name}} @else ToDo @endif</p>
                                 </div>
                                 <div class="col-auto">
                                     <a href="{{route('task.edit', ['list' =>$list->id, 'task' =>$task->id])}}" class="btn btn-primary">edit</a>
@@ -36,7 +36,4 @@
             </div>
         </div>
     </div>
-@endsection
-@section('script')
-    //
 @endsection

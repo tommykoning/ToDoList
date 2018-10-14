@@ -18,7 +18,7 @@
                             <div class="form-group">
                                 <label for="status">status</label>
                                 <select class="form-control" name="status" id="TaskStatusSelect">
-                                    <option value=""></option>
+                                    <option value="">ToDo</option>
                                     @foreach($statuses as $status)
                                         <option value="{{$status->id}}"
                                         @if($status['id'] == $task['status_id'])
