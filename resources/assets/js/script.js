@@ -19,6 +19,7 @@ $(document).ready(function() {
             });
             sort.attr('data', 1);
             $(".card-body").html(numericallyOrderedDivs);
+            console.log(originalTasks);
         } else if(sort.attr('data') == 1) {
             var numericallyOrderedDivs = tasks.sort(function (a, b) {
 
@@ -27,10 +28,8 @@ $(document).ready(function() {
                 return (contentA > contentB) ? -1 : (contentA < contentB) ? 1 : 0;
             });
             $(".card-body").html(numericallyOrderedDivs);
-            sort.attr('data', 2)
-        } else {
-            $(".card-body").html(originalTasks);
-            sort.attr('data', 0)
+            sort.attr('data', 0);
+            console.log(originalTasks);
         }
     });
 });

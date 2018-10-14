@@ -64,6 +64,7 @@ class toDoListController extends Controller
         $list = ToDoList::find($id);
         $tasks = $list->Tasks;
 
+
         return view('toDoList/show', compact('list', 'tasks'));
     }
 
