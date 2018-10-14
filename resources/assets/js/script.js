@@ -13,8 +13,8 @@ $(document).ready(function() {
         if (sort.attr('data') == 0 ) {
             var numericallyOrderedDivs = tasks.sort(function (a, b) {
 
-                var contentA =parseInt( $(a).attr('data-sort'));
-                var contentB =parseInt( $(b).attr('data-sort'));
+                var contentA =parseInt( $(a).attr('data'));
+                var contentB =parseInt( $(b).attr('data'));
                 return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
             });
             sort.attr('data', 1);
@@ -31,6 +31,20 @@ $(document).ready(function() {
             sort.attr('data', 0);
             console.log(originalTasks);
         }
+    });
+
+    $('#filt').change(function () {
+       let filtOn = $('#filt option:selected').attr('data');
+       $('.task').each(function (index, value) {
+           let data = $.trim(($(this).attr('data-sort')));
+           if (filtOn == '0') {
+               $(this).removeAttr('hidden');
+           } else if (data != filtOn) {
+               $(this).attr('hidden', true);
+           } else {
+               $(this).removeAttr('hidden');
+           }
+       });
     });
 });
 

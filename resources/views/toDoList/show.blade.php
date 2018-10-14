@@ -9,10 +9,16 @@
                         <a href="{{route('todolist.index')}}" class="btn btn-secondary">back</a>
                         <a class="btn btn-primary" href='{{route('task.create', $list->id)}}'>create</a>
                         <button class="btn btn-primary" id="sort" data="0">sorteer</button>
+                        <select class="form-control col-md-4" id="filt">
+                            <option data="0">all</option>
+                            @foreach($statuses as $status)
+                                <option data="{{$status->id}}">{{$status->status_name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="card-body">
                         @foreach($tasks as $task)
-                            <div class="form-row task" data-sort="@if($task['status_id']) {{$task['status_id']}} @else 0 @endif">
+                            <div class="form-row task" data-sort="@if($task['status_id']) {{$task['status_id']}} @else 5 @endif">
                                 <div class="col-5">
                                     <p class="form-control">{{$task->task_name}}</p>
                                 </div>
